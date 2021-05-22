@@ -10,10 +10,10 @@ using Telegram.Bot.Types;
 namespace ServiceMaxTon.Controllers
 {
     [ApiController]
-    [Route("api/bot")]
+    [Route("/")]
     public class BotController:ControllerBase
     {
-
+        [HttpPost]
         public async Task <IActionResult> Post([FromBody] Update update)
         {
             TelegramBotClient client = new TelegramBotClient(Settings.Token);
@@ -26,5 +26,6 @@ namespace ServiceMaxTon.Controllers
             return Ok();
 
         }
+
     }
 }
