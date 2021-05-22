@@ -16,11 +16,17 @@ namespace ServiceMaxTon.Controllers
         [HttpPost]
         public async Task <IActionResult> Post([FromBody] Update update)
         {
-            TelegramBotClient client = new TelegramBotClient(Settings.Token);
+            var commands = Bot.Commands;
+            var message = update.Message;
+            var client = await Bot.Get();
 
-            if(update.Type== Telegram.Bot.Types.Enums.UpdateType.Message)
+            foreach(var command in commands)
             {
-                await client.SendTextMessageAsync(update.Message.From.Id, "answer");
+                if (true)
+                {
+                    command.Execute(message, client);
+                    break;
+                }
             }
 
             return Ok();

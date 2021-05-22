@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ServiceMaxTon.Model;
 
 namespace ServiceMaxTon
 {
@@ -18,6 +19,7 @@ namespace ServiceMaxTon
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Bot.Get().Wait();
         }
 
         public IConfiguration Configuration { get; }
