@@ -14,7 +14,13 @@ namespace ServiceMaxTon.Model.Commands
 
         public bool Contains(string command)
         {
-            return command.Contains(this.Name) && command.Contains(Settings.Name);
+
+            return command.Contains(this.Name);
+        }
+
+        public async Task CommandNotFound(string command, Message message,TelegramBotClient client)
+        {
+            await client.SendTextMessageAsync(message.Chat.Id, $"Команда {command} не определена.");
         }
     }
 }

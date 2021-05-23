@@ -19,15 +19,23 @@ namespace ServiceMaxTon.Controllers
             var commands = Bot.Commands;
             var message = update.Message;
             var client = await Bot.Get();
-
+            bool flagCommand = false;
+            
             foreach(var command in commands)
             {
-                if (true)
+                if (command.Contains(message.Text))
                 {
                     command.Execute(message, client);
+                    flagCommand = true;
                     break;
                 }
+                if (command==commands[commands.Count-1] && flagCommand==false)
+                {
+                    await command.CommandNotFound(message.Text, message, client);
+                }
+                
             }
+
 
             return Ok();
 
