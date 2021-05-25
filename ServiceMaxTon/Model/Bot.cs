@@ -25,8 +25,11 @@ namespace ServiceMaxTon.Model
             commandsList = new List<Command>();
             commandsList.Add(new StartCommand());
             commandsList.Add(new SetCommand());
-            commandsList.Add(new GetCommand());
+            commandsList.Add(new GetCompletedCommand());
             commandsList.Add(new DeliteCommand());
+
+            commandsList.Add(new SetExpensesCommand());
+            
 
             client = new TelegramBotClient(Settings.Token);
             await client.DeleteWebhookAsync();

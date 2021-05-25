@@ -6,7 +6,7 @@ using Telegram.Bot.Types;
 
 namespace ServiceMaxTon.Model.Commands
 {
-    public class GetCommand : Command
+    public class GetCompletedCommand : Command
     {
         public override string Name => "Данные";
 

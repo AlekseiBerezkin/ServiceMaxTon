@@ -341,3 +341,6 @@ healthchecksdb
 /ServiceMaxTon/CompletedWork.db
 /ServiceMaxTon/CompletedWork.db-wal
 /ServiceMaxTon/CompletedWork.db-shm
+/ServiceMaxTon/MaxtonDb.db-wal
+/ServiceMaxTon/MaxtonDb.db-shm
+/ServiceMaxTon/MaxtonDb.db

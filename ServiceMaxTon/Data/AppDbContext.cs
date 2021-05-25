@@ -11,6 +11,7 @@ namespace ServiceMaxTon.Data
     public class AppDbContext:DbContext
     {
         public DbSet<CompletedWork> CompletedWork { get; set; }
+        public DbSet<Expenses> Expenses { get; set; }
 
         public AppDbContext()
         {
@@ -18,7 +19,7 @@ namespace ServiceMaxTon.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=CompletedWork.db");
+            optionsBuilder.UseSqlite("Filename=MaxtonDb.db");
         }
     }
 }
