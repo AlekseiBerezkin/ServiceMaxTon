@@ -17,18 +17,25 @@ namespace ServiceMaxTon.Model
 
         static public async Task<TelegramBotClient> Get()
         {
-            if(client!=null)
+            if (client != null)
             {
                 return client;
             }
 
             commandsList = new List<Command>();
             commandsList.Add(new StartCommand());
+            commandsList.Add(new SetCommand());
+
+
             client = new TelegramBotClient(Settings.Token);
             await client.DeleteWebhookAsync();
             await client.SetWebhookAsync(Settings.Url);
 
-            return client;        }
+            return client;
+        }
+
+
 
     }
+
 }
