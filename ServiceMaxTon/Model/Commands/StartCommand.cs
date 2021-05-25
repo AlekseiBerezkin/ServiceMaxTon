@@ -21,22 +21,7 @@ namespace ServiceMaxTon.Model.Commands
 
             //DateTime a =message.Date;
 
-            AppDbContext db = new AppDbContext();
-            CompletedWork cw = new CompletedWork
-            {
-                Transparency = 5,
-                Lenght = 1.5,
-                Cash = 2500,
-                Date = message.Date
-                
-            };
-
-            db.Add(cw);
-
-            db.SaveChanges();
-
-           
-            //db.Add
+            
         }
 
     }

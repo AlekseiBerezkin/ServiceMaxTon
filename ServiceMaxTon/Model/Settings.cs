@@ -12,5 +12,6 @@ namespace ServiceMaxTon.Model
         public static string Name { get; } = "Maxtonirovka_bot";
         public static string connectionString = "Data Source=usersdata.db";
         public static string workingDirectory = Environment.CurrentDirectory;
+        public static int GMT = 3;
     }
 }
