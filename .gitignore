@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/ServiceMaxTon/CompletedWork.db-shm
+/ServiceMaxTon/CompletedWork.db-wal
+/ServiceMaxTon/CompletedWork.db
