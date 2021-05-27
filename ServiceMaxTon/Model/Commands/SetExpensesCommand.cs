@@ -19,17 +19,23 @@ namespace ServiceMaxTon.Model.Commands
                 AppDbContext db = new AppDbContext();
                 Expenses expenses = new Expenses();
 
-                int tempInt = 0;
-
+            int tempInt = 0;
+           
                 bool success = int.TryParse(SplitData[SplitData.Length-1], out tempInt);
 
                 if(success)
                 {
-                    expenses.CashExpenses = tempInt;
-                //List<string> ListNameExpenses = SplitData.ToList();
-                //ListNameExpenses.;
+                expenses.CashExpenses = tempInt;
+                expenses.Date = message.Date;
 
-                    expenses.Name = SplitData[1];
+                SplitData[0] = "";
+                SplitData[SplitData.Length - 1] = "";
+                expenses.Name = "";
+                foreach (string s in SplitData)
+                {
+                    expenses.Name+=(s+" ");
+                }
+                
                     db.Add(expenses);
                     db.SaveChanges();
                     await client.SendTextMessageAsync(message.Chat.Id, "Данные успешно добавлены в БД.");

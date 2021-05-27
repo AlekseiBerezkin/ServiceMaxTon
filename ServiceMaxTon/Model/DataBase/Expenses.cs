@@ -10,5 +10,6 @@ namespace ServiceMaxTon.Data
         public int id { get; set; }
         public string Name { get; set; }
         public int CashExpenses { get; set; }
+        public DateTime Date { get; set; }
     }
 }

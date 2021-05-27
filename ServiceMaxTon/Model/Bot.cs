@@ -25,7 +25,7 @@ namespace ServiceMaxTon.Model
             commandsList = new List<Command>();
             commandsList.Add(new StartCommand());
             commandsList.Add(new SetCommand());
-            commandsList.Add(new GetCompletedCommand());
+            commandsList.Add(new Get());
             commandsList.Add(new DeliteCommand());
 
             commandsList.Add(new SetExpensesCommand());
