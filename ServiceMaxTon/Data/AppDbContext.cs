@@ -12,6 +12,7 @@ namespace ServiceMaxTon.Data
     {
         public DbSet<CompletedWork> CompletedWork { get; set; }
         public DbSet<Expenses> Expenses { get; set; }
+        public DbSet<Material> Material { get; set; }
 
         public AppDbContext()
         {

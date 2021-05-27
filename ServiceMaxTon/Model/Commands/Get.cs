@@ -45,6 +45,20 @@ namespace ServiceMaxTon.Model.Commands
 
                         }
                         break;
+                    case "пленка":
+                        foreach (Material m  in db.Material)
+                        {
+
+                            strOut += $"ID:{m.id}\n" +
+                                $"Дата:{m.Date.ToString("d")}\n" +
+                                $"Стоимость:{m.cost}р\n" +
+                                $"Производитель:{m.manufacturer}\n" +
+                                $"Процент: { m.Transparency}\n" +
+                                $"Длинна: { m.lenght}\n" +
+                                $"\n";
+
+                        }
+                        break;
                     default:
                         strOut = $"Команда {str[1]} не определена";
                         break;

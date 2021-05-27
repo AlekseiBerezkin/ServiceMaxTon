@@ -26,7 +26,7 @@ namespace ServiceMaxTon.Model.Commands
                 if(success)
                 {
                 expenses.CashExpenses = tempInt;
-                expenses.Date = message.Date;
+                expenses.Date = message.Date.AddHours(Settings.GMT);
 
                 SplitData[0] = "";
                 SplitData[SplitData.Length - 1] = "";
