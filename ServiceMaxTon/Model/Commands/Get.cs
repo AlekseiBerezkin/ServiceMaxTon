@@ -10,6 +10,8 @@ namespace ServiceMaxTon.Model.Commands
     {
         public override string Name => "Данные";
 
+        public override string Description => throw new System.NotImplementedException();
+
         public override async void Execute(Message message, TelegramBotClient client)
         {
             AppDbContext db = new AppDbContext();
@@ -29,6 +31,7 @@ namespace ServiceMaxTon.Model.Commands
                                 $"Процент:{cw.Transparency}\n" +
                                 $"Длинна:{cw.Lenght}\n" +
                                 $"Стоимость:{cw.Cash}р\n" +
+                                $"Производитель:{cw.Manufacturer}\n"+
                                 $"\n";
 
                         }

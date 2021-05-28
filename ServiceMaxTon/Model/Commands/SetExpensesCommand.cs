@@ -13,6 +13,13 @@ namespace ServiceMaxTon.Model.Commands
     {
         public override string Name => "Расходы";
 
+        public override string Description => $"Команда {Name} добавляет в таблицу расходы информацию о расходах(аренда, интсрумент, свет т.д). Синтаксис:" +
+            $"Расходы ТЕКСТ С\n" +
+            $"ТЕКСТ - коментарий на что были расходованы средства\n" +
+            $"C - сумма средств\n" +
+            $"Пример:\n" +
+            $"Расходы приобретение инструмента 2500";
+
         public override async void Execute(Message message, TelegramBotClient client)
         {
             string[] SplitData = message.Text.Split(' ');
@@ -42,7 +49,22 @@ namespace ServiceMaxTon.Model.Commands
                 }
                 else
                 {
+                if (SplitData.Length == 2)
+                {
+                    if(SplitData[1]=="?")
+                    {
+                        await client.SendTextMessageAsync(message.Chat.Id, Description);
+                    }
+                    else
+                    {
+                        await client.SendTextMessageAsync(message.Chat.Id, "Не верный формат команды");
+                    }
+                }
+                else
+                {
                     await client.SendTextMessageAsync(message.Chat.Id, "Не верный формат параметра средства");
+                }
+                    
                 }
             
         }

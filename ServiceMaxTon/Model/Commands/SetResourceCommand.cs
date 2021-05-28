@@ -12,6 +12,16 @@ namespace ServiceMaxTon.Model.Commands
     public class SetResourceCommand : Command
     {
         public override string Name => "Пленка";
+
+        public override string Description => "Команда Пленка добавляет в таблицу информацию о новой пленке, которая преобретена. Синтаксис:\n" +
+            "Пленка % L C UV \n" +
+            "%-светопропускание\n" +
+            "L-длинна пленки\n" +
+            "C-стоимость\n" +
+            "UV-производитель\n" +
+            "Пример:\n" +
+            "Пленка 5 30 13400 UltraVision";
+
         //Пленка 5 30 13400 UV
         public override async void Execute(Message message, TelegramBotClient client)
         {
@@ -58,7 +68,21 @@ namespace ServiceMaxTon.Model.Commands
             }
             else
             {
-                await client.SendTextMessageAsync(message.Chat.Id, "Не верный формат команды");
+                if (SplitData.Length == 2)
+                {
+                    if (SplitData[1] == "?")
+                    {
+                        await client.SendTextMessageAsync(message.Chat.Id, Description);
+                    }
+                    else
+                    {
+                        await client.SendTextMessageAsync(message.Chat.Id, "Не верный формат команды");
+                    }
+                }
+                else
+                {
+                    await client.SendTextMessageAsync(message.Chat.Id, "Не верный формат параметра средства");
+                }
             }
         }
     }

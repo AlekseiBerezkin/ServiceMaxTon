@@ -13,6 +13,10 @@ namespace ServiceMaxTon.Model.Commands
     {
         public override string Name => "Удалить";
 
+        public override string Description => $"Команда {Name} удалят из таблицы выполненных работ указанную позицию.Синтакси:\n" +
+            $"Удалить ID\n" +
+            $"Параметр ID это номер записи в таблице выполненных работ, который можно узнать набрав команду Данные Пример: \n" +
+            $"Удалить 44";
         public override async void Execute(Message message, TelegramBotClient client)
         {
             string[] SplitData = message.Text.Split();
@@ -37,9 +41,20 @@ namespace ServiceMaxTon.Model.Commands
                         await client.SendTextMessageAsync(message.Chat.Id, $"Запись с id {id} не найдена");
                     }
                 }
+                if (SplitData[1] == "?")
+                {
+                    await client.SendTextMessageAsync(message.Chat.Id, Description);
+                }
+                else
+                {
+                    await client.SendTextMessageAsync(message.Chat.Id, $"Не верный формат команды");
+                }
+
+
             }
             else
             {
+
                 await client.SendTextMessageAsync(message.Chat.Id, $"Не верный формат команды");
             }
         }

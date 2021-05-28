@@ -12,6 +12,7 @@ namespace ServiceMaxTon.Model.DataBase
         public int Transparency { get; set; }
         public double Lenght { get; set; }
         public int Cash { get; set; }
-        
+        public string Manufacturer { get; set; }
+
     }
 }

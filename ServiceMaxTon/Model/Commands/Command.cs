@@ -10,6 +10,7 @@ namespace ServiceMaxTon.Model.Commands
     public abstract class Command
     {
         public abstract string Name { get; }
+        public abstract string Description { get; }
         public abstract void Execute(Message message, TelegramBotClient client);
 
         public bool Contains(string command)
@@ -22,5 +23,6 @@ namespace ServiceMaxTon.Model.Commands
         {
             await client.SendTextMessageAsync(message.Chat.Id, $"Команда {command} не определена.");
         }
+
     }
 }

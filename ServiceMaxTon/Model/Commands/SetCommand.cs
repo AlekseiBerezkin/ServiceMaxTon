@@ -14,6 +14,13 @@ namespace ServiceMaxTon.Model.Commands
     {
         public override string Name => "Записать";
 
+        public override string Description => $"Команда {Name} предназначена для записи выполненых работ.Пример\n" +
+            $"Синтаксис:{Name} % L C UV\n" +
+            $"% - светопропускание пленки\n" +
+            $"L - затраченная длинна\n" +
+            $"C - Сумма средств, полученная в результате выполненой работы\n" +
+            $"UV - производитель пленки";
+
         public override async void Execute(Message message, TelegramBotClient client)
         {
             long chatId = message.Chat.Id;
@@ -23,7 +30,7 @@ namespace ServiceMaxTon.Model.Commands
             string[] SplitData = message.Text.Split(' ');
             //if(int.TryParse(SplitData[1])){}
 
-            if (SplitData.Length == 4)
+            if (SplitData.Length == 5)
             {
             AppDbContext db = new AppDbContext();
             CompletedWork cw = new CompletedWork();
@@ -55,6 +62,7 @@ namespace ServiceMaxTon.Model.Commands
                         {
                             cw.Lenght = tempDouble;
                             cw.Date = message.Date.AddHours(Settings.GMT);
+                            cw.Manufacturer = SplitData[4];
                             db.Add(cw);
                             db.SaveChanges();
                             await client.SendTextMessageAsync(chatId, "Данные записаны в БД");
@@ -80,7 +88,22 @@ namespace ServiceMaxTon.Model.Commands
         }
             else
             {
-                await client.SendTextMessageAsync(chatId, "Неверный формат команды");
+                if(SplitData.Length==2)
+                {
+                    if(SplitData[1]=="?")
+                    {
+                        await client.SendTextMessageAsync(chatId, Description);
+                    }
+                    else
+                    {
+                        await client.SendTextMessageAsync(message.Chat.Id, "Не верный формат команды");
+                    }
+                }
+                else
+                {
+                    await client.SendTextMessageAsync(chatId, "Неверный формат команды");
+                }
+                
             }
         }
     }
