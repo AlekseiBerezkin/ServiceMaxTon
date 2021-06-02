@@ -1,4 +1,5 @@
 ﻿using ServiceMaxTon.Data;
+using ServiceMaxTon.Model.Action;
 using ServiceMaxTon.Model.DataBase;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,8 @@ namespace ServiceMaxTon.Model.Commands
                         cw.Date = message.Date.AddHours(Settings.GMT);
                         db.Add(cw);
                         db.SaveChanges();
+                            UpdateRemainingMaterial URM = new UpdateRemainingMaterial();
+                            URM.updateRemainingMaterialInformation(cw);
                         await client.SendTextMessageAsync(chatId, "Данные записаны в БД");
                     }
                     else

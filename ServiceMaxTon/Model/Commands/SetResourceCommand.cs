@@ -1,4 +1,5 @@
 ﻿using ServiceMaxTon.Data;
+using ServiceMaxTon.Model.Action;
 using ServiceMaxTon.Model.DataBase;
 using System;
 using System.Collections.Generic;
@@ -50,12 +51,14 @@ namespace ServiceMaxTon.Model.Commands
                                 material.Date = message.Date.AddHours(Settings.GMT);
                                 material.manufacturer = SplitData[4];
 
-
-
+                                RemainingMaterial RM = new RemainingMaterial();
+                                UpdateRemainingMaterial URM = new UpdateRemainingMaterial();
+                                URM.addRemainingMaterialInformation(material);
                                 db.Add(material);
                                 db.SaveChanges();
                                 await client.SendTextMessageAsync(message.Chat.Id, "Данные успешно записаны в БД");
-
+                                
+                                
                                 break;
                     }
                         }
