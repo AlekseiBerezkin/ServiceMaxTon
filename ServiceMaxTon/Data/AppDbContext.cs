@@ -8,11 +8,12 @@ using ServiceMaxTon.Model.DataBase;
 
 namespace ServiceMaxTon.Data
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<CompletedWork> CompletedWork { get; set; }
         public DbSet<Expenses> Expenses { get; set; }
         public DbSet<Material> Material { get; set; }
+        public DbSet<RemainingMaterial> RemainingMaterial { get;set;}
 
         public AppDbContext()
         {

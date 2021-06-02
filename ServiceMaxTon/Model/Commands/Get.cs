@@ -72,7 +72,10 @@ namespace ServiceMaxTon.Model.Commands
                 strOut = "Не верный формат запроса";
             }
 
-
+            if(strOut=="")
+            {
+                strOut = $"В таблице {str[1]} отсутствуют данные";
+            }
 
             await client.SendTextMessageAsync(message.Chat.Id, strOut);
         }

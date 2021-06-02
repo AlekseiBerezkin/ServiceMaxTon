@@ -50,9 +50,12 @@ namespace ServiceMaxTon.Model.Commands
                                 material.Date = message.Date.AddHours(Settings.GMT);
                                 material.manufacturer = SplitData[4];
 
+
+
                                 db.Add(material);
                                 db.SaveChanges();
                                 await client.SendTextMessageAsync(message.Chat.Id, "Данные успешно записаны в БД");
+
                                 break;
                     }
                         }
