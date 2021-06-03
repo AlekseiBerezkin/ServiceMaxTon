@@ -23,7 +23,7 @@ namespace ServiceMaxTon.Model.Commands
         {
             string s = "";
             var commands = Bot.Commands;
-            foreach (var command in commands)
+            foreach (var command in commands) 
             {
                 s += "\n"+command.Name;
             }
