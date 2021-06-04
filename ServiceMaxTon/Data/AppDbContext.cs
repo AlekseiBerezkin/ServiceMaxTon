@@ -14,7 +14,7 @@ namespace ServiceMaxTon.Data
         public DbSet<Expenses> Expenses { get; set; }
         public DbSet<Material> Material { get; set; }
         public DbSet<RemainingMaterial> RemainingMaterial { get;set;}
-
+        public DbSet<Alarm> Alarm { get; set; }
         public AppDbContext()
         {
             Database.EnsureCreated();

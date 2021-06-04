@@ -30,6 +30,7 @@ namespace ServiceMaxTon.Model
 
             commandsList.Add(new SetExpensesCommand());
             commandsList.Add(new SetResourceCommand());
+            commandsList.Add(new SetTimerCommand());
 
 
             client = new TelegramBotClient(Settings.Token);
