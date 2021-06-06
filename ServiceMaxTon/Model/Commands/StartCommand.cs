@@ -1,5 +1,6 @@
 ﻿using ServiceMaxTon.Data;
 using ServiceMaxTon.Model.DataBase;
+using ServiceMaxTon.Model.Feature;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,10 +37,11 @@ namespace ServiceMaxTon.Model.Commands
             long chatId = message.Chat.Id;
 
             await client.SendTextMessageAsync(chatId,Description);
+            Alert.AlertStop();
 
             //DateTime a =message.Date;
 
-            
+
         }
 
     }
