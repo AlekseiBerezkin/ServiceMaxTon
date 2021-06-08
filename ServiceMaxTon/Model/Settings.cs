@@ -8,10 +8,11 @@ namespace ServiceMaxTon.Model
      static public class Settings
     {
         public static string Token { get; } = "1787244610:AAHjA_pa6Z3CdGCxUtNkad-SYCvD4EVGzCo";
-        public static string Url { get; } = "https://35531c457c12.ngrok.io";
+        public static string Url { get; } = "https://14412e9bb5f8.ngrok.io";
         public static string Name { get; } = "Maxtonirovka_bot";
         public static string connectionString = "Data Source=usersdata.db";
         public static string workingDirectory = Environment.CurrentDirectory;
         public static int GMT = 3;
+        public static int EstimatedСost = 500;
     }
 }

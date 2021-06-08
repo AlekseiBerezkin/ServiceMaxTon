@@ -56,6 +56,7 @@ namespace ServiceMaxTon.Model.Commands
                         db.SaveChanges();
                             UpdateRemainingMaterial URM = new UpdateRemainingMaterial();
                             URM.updateRemainingMaterialInformation(cw);
+                            UpdateCashInfo.updateCashInfo(tempInt-(double)(tempDouble*Settings.EstimatedСost), tempInt);
                         await client.SendTextMessageAsync(chatId, "Данные записаны в БД");
                     }
                     else

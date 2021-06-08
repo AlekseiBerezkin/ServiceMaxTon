@@ -1,4 +1,5 @@
 ﻿using ServiceMaxTon.Data;
+using ServiceMaxTon.Model.Action;
 using ServiceMaxTon.Model.DataBase;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,9 @@ namespace ServiceMaxTon.Model.Commands
                         services.Costs = tempIntCosts;
                         services.Income = tempIntIncome;
                         services.Date = message.Date.AddHours(Settings.GMT);
+                        UpdateCashInfo.updateCashInfo(tempIntIncome, tempIntCosts);
+
+
 
                         SplitData[0] = "";
                         SplitData[SplitData.Length - 1] = "";
@@ -58,6 +62,7 @@ namespace ServiceMaxTon.Model.Commands
 
                         db.Add(services);
                         db.SaveChanges();
+                        
                         await client.SendTextMessageAsync(message.Chat.Id, "Данные успешно добавлены в БД.");
                     }
                     else

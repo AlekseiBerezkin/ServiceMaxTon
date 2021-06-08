@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ServiceMaxTon.Model.Action
 {
-    public class UpdateCashInfo
+    public static class UpdateCashInfo
     {
-        private Cash cash = new Cash();
-        private AppDbContext db = new AppDbContext();
-        public void updateCashInfo(int NetProfit,int DirtyProfit)
+        private static Cash cash = new Cash();
+        private static AppDbContext db = new AppDbContext();
+        public static void  updateCashInfo(double NetProfit,int DirtyProfit)
         {
             checkData();
             cash.NetProfit += NetProfit;
@@ -19,13 +19,13 @@ namespace ServiceMaxTon.Model.Action
             saveChanges();
         }
 
-        private void saveChanges()
+        private static void  saveChanges()
         {
-            db.Add(cash);
+            
             db.SaveChanges();
         }
 
-        private void checkData()
+        private static void  checkData()
         {
             var cashDB = db.Cash;
 
@@ -37,6 +37,7 @@ namespace ServiceMaxTon.Model.Action
             {
                 cash.DirtyProfit = 0;
                 cash.NetProfit = 0;
+                db.Add(cash);
             }
         }
     }
