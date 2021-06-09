@@ -13,25 +13,17 @@ namespace ServiceMaxTon.Model.Action
         private static AppDbContext db = new AppDbContext();
         public static void  updateCashInfo(double NetProfit,int DirtyProfit)
         {
-            checkData();
-            cash.NetProfit += NetProfit;
-            cash.DirtyProfit += DirtyProfit;
-            saveChanges();
-        }
-
-        private static void  saveChanges()
-        {
             
-            db.SaveChanges();
-        }
 
-        private static void  checkData()
-        {
+            
+
             var cashDB = db.Cash;
 
             if (cashDB.Any())
             {
                 cash = cashDB.Single();
+                cash.NetProfit += NetProfit;
+                cash.DirtyProfit += DirtyProfit;
             }
             else
             {
@@ -39,6 +31,9 @@ namespace ServiceMaxTon.Model.Action
                 cash.NetProfit = 0;
                 db.Add(cash);
             }
+            db.SaveChanges();
         }
+
+       
     }
 }
